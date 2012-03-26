@@ -61,7 +61,7 @@ DRAW(mapped);
 var domain = DOMAIN([[0,20*PI]])([360]);
 var mapping = function(p) {
   var u = p[0];
-  return [u, Math.sin(u)];  
+  return [u, SIN(u)];  
 }
 var mapped = MAP(mapping)(domain);
 COLOR([0,0,0])(mapped);
