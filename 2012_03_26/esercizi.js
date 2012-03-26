@@ -66,3 +66,52 @@ var mapping = function(p) {
 var mapped = MAP(mapping)(domain);
 COLOR([0,0,0])(mapped);
 DRAW(mapped);
+
+//definiamo una funzione per creare cilindri
+//un cilindro di raggio 'r' altezza 'h' e di colore 'c'
+//la definizio grafica del cilindro è data da 'm'
+var drawCylinder = function(r, h, m, c) {
+  var domain = DOMAIN([[0,2*PI],[0,h]])([m,1]);
+  var mapping = function(p) {
+    u = r * COS(p[0]);
+    v = r * SIN(p[0]);
+    w = p[1];
+    return [u, v, w];
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
+
+//definiamo una funzione che disegna 'n' colonne di raggio 'r' e altezza 'h'
+//le colonne avranno colore 'c' e saranno a distanza 'd' l'una dall'altra
+//le colonne verranno traslate rispetto all'asse x (quindi coordinata 'u')
+var drawColonnato = function(n, r, h, d, c) {
+  for (var i = 0; i < n; i++) {
+    var domain = DOMAIN([[0,2*PI],[0,h]])([36,1]);
+    var mapping = function(p) {
+      u = r * COS(p[0]) + d * i;
+      v = r * SIN(p[0]);
+      w = p[1];
+      return [u, v, w];
+    }
+    var mapped = MAP(mapping)(domain);
+    COLOR(c)(mapped);
+    DRAW(mapped);
+  }
+}
+
+//definiamo una funzione per disegnare una sfera di raggio 'r' e colore 'c'
+//la definizione grafica è datat da 'm' e 'n'
+var drawSphere = function(r, m, n, c) {
+  var domain = DOMAIN([[0,PI],[0,2*PI]])([m,n]);
+  var mapping = function(p) {
+    u = r * COS(p[0] - PI/2) * COS(p[1]);
+    v = r * COS(p[0] - PI/2) * SIN(p[1]);
+    w = r * SIN(p[0] - PI/2);
+    return [u, v, w];
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
