@@ -46,7 +46,6 @@ var mapping = function(p) {
 var mapped = MAP(mapping)(domain);
 COLOR([0,0,0])(mapped);
 DRAW(mapped);
-<<<<<<< HEAD
 
 //disegnamo la bisettrice del piano
 var domain = DOMAIN([[0,10]])([10]);
@@ -116,5 +115,3 @@ var drawSphere = function(r, m, n, c) {
   COLOR(c)(mapped);
   DRAW(mapped);
 }
-=======
->>>>>>> d0689be27235b4fc52186389c4face49f70f5ba1
