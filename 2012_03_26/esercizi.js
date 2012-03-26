@@ -48,9 +48,20 @@ COLOR([0,0,0])(mapped);
 DRAW(mapped);
 
 //disegnamo la bisettrice del piano
+var domain = DOMAIN([[0,10]])([10]);
 var mapping = function(p) {
   var u = p[0];
   return [u, u];  
+}
+var mapped = MAP(mapping)(domain);
+COLOR([0,0,0])(mapped);
+DRAW(mapped);
+
+//disegnamo una sinusoide
+var domain = DOMAIN([[0,20*PI]])([360]);
+var mapping = function(p) {
+  var u = p[0];
+  return [u, Math.sin(u)];  
 }
 var mapped = MAP(mapping)(domain);
 COLOR([0,0,0])(mapped);
