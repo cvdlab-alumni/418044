@@ -67,6 +67,70 @@ var mapped = MAP(mapping)(domain);
 COLOR([0,0,0])(mapped);
 DRAW(mapped);
 
+//definiamo una funzione per disegnare 
+//un cerchio di raggio 'r' e colore 'c'
+//con definizione 'n'
+var drawCircle = function(r, n, c) {
+  var domain = DOMAIN([[0,2*PI]])([n]);
+  var mapping = function(p) {
+    var u = r * COS(p[0]);
+    var v = r * SIN(p[0]);
+    return [u, v];  
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
+
+//definiamo una funzione per disegnare
+//una elica di raggio 'r' altezza 'h'
+//che fa 't' giri e di definizione 'n'
+//e colore 'c'
+var drawHelix = function(r, h, t, n, c) {
+  var domain = DOMAIN([[0,t*2*PI]])([n]);
+  var mapping = function(p) {
+    var u = r * COS(p[0]);
+    var v = r * SIN(p[0]);
+    var w = p[0] * h/(t * 2 * PI);
+    return [u, v, w];  
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
+
+//definiamo una funzione per disegnare un disco
+//di raggio 'r' definizione 'n' e 'm'
+//e colore 'c'
+var drawDisk = function(r, n, c) {
+  var domain = DOMAIN([[0,2*PI],[0,2*PI]])([n,1]);
+  var mapping = function(p) {
+    var u = p[1] * SIN(p[0]);
+    var v = p[1] * COS(p[0]);
+    return [u, v];  
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
+
+//definiamo una funzione per disegnare un
+//helicoide di raggio 'r' altezza 'h'
+//che fa 't' giri ha definizione 'n'
+//e colore 'c'
+var drawHelicoid = function(r, h, t, n, c) {
+  var domain = DOMAIN([[0,t*2*PI],[0,r]])([n,1]);
+  var mapping = function(p) {
+    var u = p[1] * SIN(p[0]);
+    var v = p[1] * COS(p[0]);
+    var w = p[0] * h/(t * 2 * PI);
+    return [u, v, w];  
+  }
+  var mapped = MAP(mapping)(domain);
+  COLOR(c)(mapped);
+  DRAW(mapped);
+}
+
 /* CREAZIONE DI FUNZIONI PER DISEGNARE SOLIDI */
 
 //definiamo una funzione per creare cilindri
