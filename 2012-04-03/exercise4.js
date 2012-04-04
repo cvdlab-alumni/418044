@@ -340,8 +340,15 @@ var Library = function(h,a,l,s,n) {
 	]);
 	return STRUCT([pillars,shelf]);
 };
-var l1 = COLOR(0.917, 0.627, 0.392)(T([0,1])([1.5,19])(R([2])(PI/2)(Library(3,0.5,3,0.05,10))));
-var library = STRUCT([l1]);
+//una libreria nell'interno a sinistra
+var l1 = COLOR(0.917, 0.627, 0.392)(T([0,1,2])([1.5,19,1.4])(R([2])(PI/2)(Library(3,0.4,3,0.05,10))));
+//tre librerie nel'interno a destra
+var l2 = COLOR(0.917, 0.627, 0.392)(STRUCT([
+	T([0,1,2])([39,11.2,1.4]), Library(2.4,0.3,1,0.04,8),
+	T([0])([1]), Library(1,0.3,2,0.04,4),
+	T([0])([2]), Library(2.4,0.3,1,0.04,8)
+]));
+var library = STRUCT([l1,l2]);
 
 var model = STRUCT([stairs,bases,walls,glasswalls,pillars,bench,roofs,water,library]);
 DRAW(model);
