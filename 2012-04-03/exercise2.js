@@ -4,7 +4,7 @@
 //ampiezza colonnine vetrate = 0.08 m = 8 cm
 //altezza muri = 3 m
 //altezza basamento = 1.4 m
-//altezza piscine = 1.3 m
+//altezza vasca = 1.3 m
 
 //un gradino
 var step = SIMPLEX_GRID([[0.35],[3],[0.2]]);
@@ -32,7 +32,7 @@ var b2 = SIMPLEX_GRID([
 	[2],
 	[1.4]
 ]);
-//base esterna (piscina)
+//base esterna (vasca)
 var b3 = SIMPLEX_GRID([
 	[-0.85,21.15],
 	[-1,9],
@@ -62,7 +62,7 @@ var b7 = SIMPLEX_GRID([
 	[-4,12.15],
 	[1.4]
 ]);
-//base interna (piscina interna destra)
+//base interna (vasca interna destra)
 var b8 = SIMPLEX_GRID([
 	[-48,4.15],
 	[-5,11.15],
