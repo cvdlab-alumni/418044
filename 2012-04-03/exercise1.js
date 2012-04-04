@@ -3,7 +3,10 @@
 //spessore delle vetrate = 0.08 m = 8 cm
 
 //il contorno dell'edificio
-var boundary = POLYLINE([[0,0],[39,0],[39,4],[53,4],[53,6],[52.15,6],[52.15,16.15],[40,16.15],[40,17],[9,17],[9,22],[1,22],[1,2],[0,2],[0,0]]);
+var boundary = POLYLINE([[0,0],[39,0],[39,1],[36.55,1],[36.55,4],[53,4],[53,6],[52.15,6],[52.15,16.15],[40,16.15],[40,17],[9,17],[9,22],[1,22],[1,2],[0,2],[0,0]]);
+
+//le scale
+var stairs = POLYLINE([[36.9,4],[36.9,1],[37.25,1],[37.25,4],[37.6,4],[37.6,1],[37.95,1],[37.95,4],[38.3,4],[38.3,1],[38.65,1],[38.65,4],[39,4],[39,1]]);
 
 //la 'piscina'
 var swimmingpoll = POLYLINE([[1,1],[22,1],[22,10],[1,10],[1,1]]);
@@ -48,5 +51,9 @@ var pillar7 = POLYLINE([[45.915,6.925],[45.915,7.075],[46.065,7.075],[46.065,6.9
 var pillar8 = POLYLINE([[45.915,13.925],[45.915,14.075],[46.065,14.075],[46.065,13.925],[45.915,13.925]]);
 var pillars = STRUCT([pillar1,pillar2,pillar3,pillar4,pillar5,pillar6,pillar7,pillar8]);
 
-var map = STRUCT([boundary,swimmingpoll,wallsxex,wallsxin,walldxex,wallbench,wallin,pillars]);
-DRAW(COLOR([0,0,0])(map));
+var roof1 = POLYLINE([[-0.05,13.95],[-0.05,23.05],[10.05,23.05],[10.05,13.95],[-0.05,13.95]]);
+var roof2 = POLYLINE([[24.95,3.95],[24.95,17.05],[48.05,17.05],[48.05,3.95],[24.95,3.95]]);
+var roofs = STRUCT([roof1,roof2]);
+
+var map = STRUCT([boundary,stairs,swimmingpoll,wallsxex,wallsxin,walldxex,wallbench,wallin,pillars,roofs]);
+DRAW(map);

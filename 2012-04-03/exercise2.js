@@ -281,5 +281,32 @@ var be2 = T([0,1])([7.825,14.25])(
 );
 var bench = STRUCT([be1,be2]);
 
-var model = STRUCT([stairs,bases,walls,glasswalls,pillars,bench]);
+//i tetti
+//tetto a sinistra
+var r11 = SIMPLEX_GRID([
+	[10],
+	[-14,9],
+	[-4.4,0.2]
+]);
+var r12 = T([0])([-0.05])(SIMPLEX_GRID([
+	[10.1],
+	[-13.95,9.1],
+	[-4.6,0.05]
+]));
+var r1 = STRUCT([r11,r12]);
+//tetto a destra
+var r21 = SIMPLEX_GRID([
+	[-25,23],
+	[-4,13],
+	[-4.4,0.2]
+]);
+var r22 = SIMPLEX_GRID([
+	[-24.95,23.1],
+	[-3.95,13.1],
+	[-4.6,0.05]
+]);
+var r2 = STRUCT([r21,r22]);
+var roofs = STRUCT([r1,r2]);
+
+var model = STRUCT([stairs,bases,walls,glasswalls,pillars,bench,roofs]);
 DRAW(model);
