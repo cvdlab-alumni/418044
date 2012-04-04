@@ -57,13 +57,13 @@ var b6 = SIMPLEX_GRID([
 //base interna (destra)
 var b7 = SIMPLEX_GRID([
 	[-36.55,11.45],
-	[-4,12],
+	[-4,12.15],
 	[1.4]
 ]);
 //base interna (piscina interna destra)
 var b8 = SIMPLEX_GRID([
-	[-48,4],
-	[-5,11],
+	[-48,4.15],
+	[-5,11.15],
 	[1.3]
 ]);
 //base esterna (bordino destro orizzontale)
@@ -138,7 +138,25 @@ var w9 = new SIMPLEX_GRID([
 ]);
 var wallsxin = STRUCT([w5,w6,w7,w8,w9]);
 
-var walls = STRUCT([wallsxex,wallsxin]);
+//muri esterni a destra
+var w10 = new SIMPLEX_GRID([
+  [-42,10.15],
+  [-5,0.15],
+  [-1.3,3.1]
+]);
+var w11 = new SIMPLEX_GRID([
+  [-52,0.15],
+  [-5.15,11],
+  [-1.3,3.1]
+]);
+var w12 = new SIMPLEX_GRID([
+  [-38.5,13.5],
+  [-16,0.15],
+  [-1.3,3.1]
+]);
+var wallexdx = STRUCT([w10,w11,w12]);
+
+var walls = STRUCT([wallsxex,wallsxin,wallexdx]);
 
 var glasswalls = STRUCT([]);
 
