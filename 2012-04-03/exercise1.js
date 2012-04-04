@@ -20,7 +20,7 @@ var wallsxin = STRUCT([wallsxin1,wallsxin2,wallsxin3,wallsxin4]);
 
 //muri esterni a destra
 var walldxex1 = POLYLINE([[52.15,6],[52.15,5],[42,5],[42,5.15],[52,5.15],[52,16],[38.5,16],[38.5,16.15],[40,16.15]]);
-var walldxex2 = POLYLINE([[42,5.15],[31,5.15],[31,5.07],[42,5.07]]);
+var walldxex2 = POLYLINE([[42,5.15],[30.92,5.15],[30.92,5.07],[42,5.07]]);
 var walldxex3 = POLYLINE([[48,16],[48,5.15]]);
 var walldxex = STRUCT([walldxex1,walldxex2,walldxex3]);
 
@@ -31,8 +31,8 @@ var wallbench = STRUCT([wallsxswim,bench]);
 
 //muri interni all'edificio
 var wallin1 = POLYLINE([[26,7.25],[26,7.4],[35,7.4],[35,7.25],[26,7.25]]);
-var wallin2 = POLYLINE([[31,13.6],[31,13.68],[41,13.68],[41,13.6],[31,13.6]]);
-var wallin3 = POLYLINE([[32,13.6],[32,7.4],[32.08,7.4],[32.08,13.6],[32.92,13.6],[32.92,7.4],[33,7.4],[33,13.6]]);
+var wallin2 = POLYLINE([[30.92,13.6],[30.92,13.68],[41,13.68],[41,13.6],[30.92,13.6]]);
+var wallin3 = POLYLINE([[31.92,13.6],[31.92,7.4],[32,7.4],[32,13.6],[32.92,13.6],[32.92,7.4],[33,7.4],[33,13.6]]);
 var wallin4 = POLYLINE([[38.25,11.5],[38.25,11.65],[43.5,11.65],[43.5,11.5],[38.25,11.5]]);
 var wallin5 = POLYLINE([[45.5,14.25],[45.58,14.25],[45.58,6.75],[45.5,6.75],[45.5,14.25]]);
 var wallin = STRUCT([wallin1,wallin2,wallin3,wallin4,wallin5]);

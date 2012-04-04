@@ -1,8 +1,9 @@
 
 //spessore dei muri = 0.15 m = 15 cm
 //spessore delle vetrate = 0.08 m = 8 cm
-//ampiezza delle vetrate interne = 1 m
+//ampiezza delle vetrate interne = 0.92 m = 92 cm
 //ampiezza delle vetrate esterne a sinistra = 1.9 m
+//ampiezza delle vetrate interne a destra = 0.9275 m = 92.75 cm
 //ampiezza colonnine vetrate = 0.08 m = 8 cm
 //altezza muri = 3 m
 //altezza basamento = 1.4 m
@@ -144,79 +145,120 @@ var wallsxin = STRUCT([w5,w6,w7,w8,w9]);
 
 //muri esterni a destra
 var w10 = SIMPLEX_GRID([
-  [-42,10.15],
-  [-5,0.15],
-  [-1.3,3.1]
+  	[-42,10.15],
+  	[-5,0.15],
+  	[-1.3,3.1]
 ]);
 var w11 = SIMPLEX_GRID([
-  [-52,0.15],
-  [-5.15,11],
-  [-1.3,3.1]
+  	[-52,0.15],
+  	[-5.15,11],
+  	[-1.3,3.1]
 ]);
 var w12 = SIMPLEX_GRID([
-  [-38.5,13.5],
-  [-16,0.15],
-  [-1.3,3.1]
+  	[-38.5,13.5],
+  	[-16,0.15],
+  	[-1.3,3.1]
 ]);
 var wallexdx = STRUCT([w10,w11,w12]);
 
 //muri centrali interni
 var w13 = SIMPLEX_GRID([
-  [-7.25,20.5],
-  [-15,0.15],
-  [-1.4,3]
+  	[-7.25,20.5],
+  	[-15,0.15],
+  	[-1.4,3]
 ]);
 var w14 = SIMPLEX_GRID([
-  [-26,9],
-  [-7.25,0.15],
-  [-1.4,3]
+  	[-26,9],
+  	[-7.25,0.15],
+  	[-1.4,3]
 ]);
 var w15 = SIMPLEX_GRID([
-  [-38.25,5.25],
-  [-11.5,0.15],
-  [-1.4,3]
+  	[-38.25,5.25],
+  	[-11.5,0.15],
+  	[-1.4,3]
 ]);
 var wallin = STRUCT([w13,w14,w15]);
 
 var walls = STRUCT([wallsxex,wallsxin,wallexdx,wallin]);
 
-//tutte le vetrate dell'edificio (prima i pilastri e poi le travi)
+//tutte le vetrate dell'edificio
+//il pilastro generico di una vetrata
+var glasspillar = SIMPLEX_GRID([
+	[0.08],
+	[0.08],
+	[-1.48,2.84]
+]);
+//trave orizzontale (di lunghezza 'l') di una vetrata
+var GlassBeams = function(l) {
+	return SIMPLEX_GRID([
+		[l],
+		[0.08],
+		[-1.4,0.08,-2.84,0.08]
+	]);
+};
+//trave verticale (di lunghezza 'l') di una vetrata
+var VerticalGlassBeams = function(l) {
+	return T([0])([0.08])(
+		R([2])([PI/2])(
+			GlassBeams(l)
+		)
+	);
+};
 //vetrata sinistra
-var pg1 = SIMPLEX_GRID([
-  [-1,0.08,-1.9,0.08,-1.9,0.08,-1.9,0.08,-1.9,0.08],
-  [-17,0.08],
-  [-1.48,2.84]
+var g1 = STRUCT([
+	T([0,1])([1,17]), glasspillar, GlassBeams(8),
+	T([0])([1.98]), glasspillar,
+	T([0])([1.98]), glasspillar,
+	T([0])([1.98]), glasspillar,
+	T([0])([1.98]), glasspillar
 ]);
-var bg1 = SIMPLEX_GRID([
-	[-1,8],
-	[-17,0.08],
-	[-1.4,0.08,-2.84,0.08]
-]);
-var g1 = STRUCT([pg1,bg1]);
 //vetrata destra
-var g2 = SIMPLEX_GRID([
-  [-31,11],
-  [-5.07,0.08],
-  [-1.4,3]
+var g2 = STRUCT([
+	T([0,1])([30.92,5.07]), glasspillar, GlassBeams(11.08),
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar
 ]);
 //vetrate centrali
-var g3 = SIMPLEX_GRID([
-  [-31,10],
-  [-13.6,0.08],
-  [-1.4,3]
+var g3 = STRUCT([
+	T([0,1])([30.92,13.6]), glasspillar, GlassBeams(10.08),
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar,
+	T([0])([1]), glasspillar
 ]);
-var g4 = SIMPLEX_GRID([
-  [-32,0.08,-0.84,0.08],
-  [-7.4,6.2],
-  [-1.4,3]
+var g4 = STRUCT([	
+	T([0,1])([31.92,7.4]), glasspillar, VerticalGlassBeams(6.2),
+	T([1])([3.06]), glasspillar,
+	T([1])([3.06]), glasspillar
 ]);
-var g5 = SIMPLEX_GRID([
-  [-45.5,0.08],
-  [-6.75,7.5],
-  [-1.4,3]
+var g5 = T([0])([1])(g4);
+var g6 = STRUCT([
+	T([0,1])([45.5,6.75]), glasspillar, VerticalGlassBeams(7.5),
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar,
+	T([1])([0.9275]), glasspillar
 ]);
-
-var glasswalls = STRUCT([g1,g2,g3,g4,g5]);
+var glasswalls = STRUCT([g1,g2,g3,g4,g5,g6]);
 
 var pillars = STRUCT([]);
 
