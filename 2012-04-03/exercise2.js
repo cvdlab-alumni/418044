@@ -156,7 +156,25 @@ var w12 = new SIMPLEX_GRID([
 ]);
 var wallexdx = STRUCT([w10,w11,w12]);
 
-var walls = STRUCT([wallsxex,wallsxin,wallexdx]);
+//muri centrali interni
+var w13 = new SIMPLEX_GRID([
+  [-7.25,20.5],
+  [-15,0.15],
+  [-1.4,3]
+]);
+var w14 = new SIMPLEX_GRID([
+  [-26,9],
+  [-7.25,0.15],
+  [-1.4,3]
+]);
+var w15 = new SIMPLEX_GRID([
+  [-38.25,5.25],
+  [-11.5,0.15],
+  [-1.4,3]
+]);
+var wallin = STRUCT([w13,w14,w15]);
+
+var walls = STRUCT([wallsxex,wallsxin,wallexdx,wallin]);
 
 var glasswalls = STRUCT([]);
 
