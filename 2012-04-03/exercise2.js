@@ -1,9 +1,6 @@
 
 //spessore dei muri = 0.15 m = 15 cm
 //spessore delle vetrate = 0.08 m = 8 cm
-//ampiezza delle vetrate interne = 0.92 m = 92 cm
-//ampiezza delle vetrate esterne a sinistra = 1.9 m
-//ampiezza delle vetrate interne a destra = 0.9275 m = 92.75 cm
 //ampiezza colonnine vetrate = 0.08 m = 8 cm
 //altezza muri = 3 m
 //altezza basamento = 1.4 m
@@ -229,7 +226,7 @@ var g2 = STRUCT([
 ]);
 //vetrate centrali
 var g3 = STRUCT([
-	T([0,1])([30.92,13.6]), glasspillar, GlassBeams(10.08),
+	T([0,1])([30.92,13.67]), glasspillar, GlassBeams(10.08),
 	T([0])([1]), glasspillar,
 	T([0])([1]), glasspillar,
 	T([0])([1]), glasspillar,
@@ -242,9 +239,9 @@ var g3 = STRUCT([
 	T([0])([1]), glasspillar
 ]);
 var g4 = STRUCT([	
-	T([0,1])([31.92,7.4]), glasspillar, VerticalGlassBeams(6.2),
-	T([1])([3.06]), glasspillar,
-	T([1])([3.06]), glasspillar
+	T([0,1])([31.92,7.4]), glasspillar, VerticalGlassBeams(6.27),
+	T([1])([3.095]), glasspillar,
+	T([1])([3.095]), glasspillar
 ]);
 var g5 = T([0])([1])(g4);
 var g6 = STRUCT([
@@ -260,7 +257,29 @@ var g6 = STRUCT([
 ]);
 var glasswalls = STRUCT([g1,g2,g3,g4,g5,g6]);
 
-var pillars = STRUCT([]);
+//le colonne
+var pillars = T([0,1])([26.925,6.925])(
+	SIMPLEX_GRID([
+		REPLICA(4)([0.15,-6.133]),
+		[0.15,-6.85,0.15],
+		[-1.4,3]
+	])
+);
 
-var model = STRUCT([stairs,bases,walls,glasswalls,pillars]);
+//la panchina
+var be1 = SIMPLEX_GRID([
+	[-7.75,15.5],
+	[-14.25,0.5],
+	[-1.7,0.1]
+]);
+var be2 = T([0,1])([7.825,14.25])(
+	SIMPLEX_GRID([
+		REPLICA(8)([0.3,-1.85]),
+		[-0.05,0.4,-0.05],
+		[-1.4,0.3]
+	])
+);
+var bench = STRUCT([be1,be2]);
+
+var model = STRUCT([stairs,bases,walls,glasswalls,pillars,bench]);
 DRAW(model);
