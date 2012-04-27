@@ -135,7 +135,7 @@ var drawHelicoid = function(r, h, t, n, c) {
 
 //definiamo una funzione per creare cilindri
 //un cilindro di raggio 'r' altezza 'h' e di colore 'c'
-//la definizio grafica del cilindro è data da 'm'
+//la definizio grafica del cilindro Ã¨ data da 'm'
 var drawCylinder = function(r, h, m, c) {
   var domain = DOMAIN([[0,2*PI],[0,h]])([m,1]);
   var mapping = function(p) {
@@ -168,7 +168,7 @@ var drawColonnato = function(n, r, h, d, c) {
 }
 
 //definiamo una funzione per disegnare una sfera di raggio 'r' e colore 'c'
-//la definizione grafica è data da 'm' e 'n'
+//la definizione grafica Ã¨ data da 'm' e 'n'
 var drawSphere = function(r, m, n, c) {
   var domain = DOMAIN([[0,2*PI],[0,PI]])([m,n]);
   var mapping = function(p) {
@@ -183,7 +183,7 @@ var drawSphere = function(r, m, n, c) {
 }
 
 //definiamo una funzione per disegnare una semisfera di raggio 'r' e colore 'c'
-//la definizione grafica è data da 'm' e 'n'
+//la definizione grafica Ã¨ data da 'm' e 'n'
 var drawSemisphere = function(r, m, n, c) {
   var domain = DOMAIN([[0,2*PI],[0,PI/2]])([m,n]);
   var mapping = function(p) {
