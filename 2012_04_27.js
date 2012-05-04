@@ -37,7 +37,7 @@ DRAW(curve);
 /*
 Cuva Spline
 	è composta da un qualsiasi numero di punti di controllo
-	la curva congunge tutti i punti (tranne il primo e l'ultimo)
+	la curva congiunge tutti i punti (tranne il primo e l'ultimo)
 	sul punti Pi abbiamo tangente uguale alla differenza Pi-1 - Pi+1
 */
 var domain = INTERVALS(1)(20);

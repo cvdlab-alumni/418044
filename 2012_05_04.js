@@ -15,12 +15,12 @@ DRAW(curves);
 var s1 = BEZIER(S1)([c1,c2]);
 var surface1 = MAP(s1)(domain2);
 DRAW(surface1);
-DRAW(SKELETON(1)(surface1));
+//DRAW(SKELETON(1)(surface1));
 
 var s2 = CUBIC_HERMITE(S1)([c1,c2,[0,0,3],[0,0,-3]]);
 var surface2 = MAP(s2)(domain2);
 DRAW(surface2);
-DRAW(SKELETON(1)(surface2));
+//DRAW(SKELETON(1)(surface2));
 
 /*********************************************************/
 
@@ -29,8 +29,8 @@ var domain2 = DOMAIN([[0,1],[0,1]])([30,50]);
 
 var p0 = [[10,0,0],[0,5,0],[0,-3,0],[5,2,0],[10,0,0]];
 var p1 = p0.map(function (p) {return [p[0],p[1],p[2]+10]});
-var p2 = p0.map(function (p) {return [p[0],p[1]-5,p[2]+20]});
-var p3 = p0.map(function (p) {return [p[0],p[1]+5,p[2]+30]});
+var p2 = p0.map(function (p) {return [p[0],p[1],p[2]+20]});
+var p3 = p0.map(function (p) {return [p[0],p[1],p[2]+30]});
 var p4 = p0.map(function (p) {return [p[0],p[1],p[2]+40]});
 
 var c0 = BEZIER(S0)(p0);
