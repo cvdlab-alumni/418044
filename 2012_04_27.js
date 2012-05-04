@@ -133,3 +133,14 @@ var MY_SPLINE_CARDINAL = function (controlpoints, intervals) {
 var controlpoints = [[-3,6],[-4,2],[-3,-1],[-1,1],[1.5,1.5],[3,4],[5,5],[7,2],[6,-2],[2,-3]];
 var model = MY_SPLINE_CARDINAL(controlpoints,20);
 DRAW(model);
+
+/*
+Differenze tra CUBIC_CARDINAL e CUBIC_UBSPLINE con gli stessi punti di controllo
+*/
+
+var domain = INTERVALS(1)(20);
+var controlpoints = [[-3,6],[-4,2],[-3,-1],[-1,1],[1.5,1.5],[3,4],[5,5],[7,2],[6,-2],[2,-3]];
+var splineCubic = SPLINE(CUBIC_UBSPLINE(domain))(controlpoints);
+DRAW(splineCubic);
+var splineCubic2 = COLOR([0,1,0])(SPLINE(CUBIC_CARDINAL(domain))(controlpoints));
+DRAW(splineCubic2);
