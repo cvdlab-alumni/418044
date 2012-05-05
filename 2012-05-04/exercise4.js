@@ -5,7 +5,7 @@ var controls0 = [[-0.4,3,0],[-0.4,2.25,1],[-0.4,-6,0],[-0.4,2.25,-0.7],[-0.4,3,0
 var c0 = BEZIER(S0)(controls0);
 var curve0 = MAP(c0)(domain1);
 
-var controls1 = [[0,2.4,0],[0,1.35,0.7],[0,-3,0],[0,1.3,-0.7],[0,2.4,0]];
+var controls1 = [[0,2.1,0],[0,1.35,0.5],[0,-2.3,0],[0,1.3,-0.5],[0,2.1,0]];
 var c1 = BEZIER(S0)(controls1);
 var curve1 = MAP(c1)(domain1);
 
@@ -53,28 +53,21 @@ var controls12 = [[5,1,0.41]];
 var c12 = BEZIER(S0)(controls12);
 var curve12 = MAP(c12)(domain1);
 
-var domain2 = DOMAIN([[0,1],[0,1]])([30,50]);
+var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 var s = BEZIER(S1)([c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12]);
 var surf = MAP(s)(domain2);
 return surf;
 
 }
 
-var Fuselage = function() {domain1 = INTERVALS(1)(30);
+var Fuselage = function() {
+	domain1 = INTERVALS(1)(30);
 
-var controls0 = [[-0.5,0,0],[-0.5,0,0],[0,0,0],[0,0,0]];
+var controls0 = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
 var c0 = CUBIC_HERMITE(S0)(controls0);
 var curve0 = MAP(c0)(domain1);
 
-var controls1 = [[-0.5,-0.3,0],[-0.5,0.1,0],[0,0,0.7],[0,0,-0.35]];
-var c1 = CUBIC_HERMITE(S0)(controls1);
-var curve1 = MAP(c1)(domain1);
-
-var controls2 = [[-0.2,-0.5,0],[-0.2,0.2,0],[0,0,1.4],[0,0,-0.7]];
-var c2 = CUBIC_HERMITE(S0)(controls2);
-var curve2 = MAP(c2)(domain1);
-
-var controls3 = [[0,-0.7,0],[0,0.3,0],[0,0,1.75],[0,0,-0.875]];
+var controls3 = [[0,-1.4,0],[0,0.3,0],[0,0,1.75],[0,0,-0.875]];
 var c3 = CUBIC_HERMITE(S0)(controls3);
 var curve3 = MAP(c3)(domain1);
 
@@ -111,10 +104,33 @@ var c11 = CUBIC_HERMITE(S0)(controls11);
 var curve11 = MAP(c11)(domain1);
 
 var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
-var s = BEZIER(S1)([c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11]);
-var surf1 = MAP(s)(domain2);
-var surf2 = S([2])([-1])(surf1);
-var surfes = STRUCT([surf1,surf2]);
+var s = BEZIER(S1)([c0,c3,c4,c5,c6,c7,c8,c9,c10,c11]);
+var surf11 = MAP(s)(domain2);
+var surf21 = S([2])([-1])(surf11);
+var surfes1 = STRUCT([surf11,surf21]);
+
+var controls15 = [[-0.2,-0.1,0],[-0.2,-0.1,0],[0,0,0],[0,0,0]];
+var c15 = CUBIC_HERMITE(S0)(controls15);
+var curve15 = MAP(c15)(domain1);
+
+var controls12 = [[-0.2,-0.1,0],[-0.2,0.1,0],[0,0,0.7],[0,0,-0.35]];
+var c12 = CUBIC_HERMITE(S0)(controls12);
+var curve12 = MAP(c12)(domain1);
+
+var controls13 = [[-0.1,-0.3,0],[-0.1,0.1,0],[0,0,0.7],[0,0,-0.35]];
+var c13 = CUBIC_HERMITE(S0)(controls13);
+var curve13 = MAP(c13)(domain1);
+
+var controls14 = [[0.6,-0.5,0],[0.6,0.2,0],[0,0,1.2],[0,0,-0.7]];
+var c14 = CUBIC_HERMITE(S0)(controls14);
+var curve14 = MAP(c14)(domain1);
+
+var s2 = BEZIER(S1)([c15,c12,c13,c14]);
+var surf21 = MAP(s2)(domain2);
+var surf22 = S([2])([-1])(surf21);
+var surfes2 = STRUCT([T([1])([0.05]),surf21,surf22]);
+var surfes = STRUCT([surfes1,surfes2]);
+
 	return surfes;
 }
 
@@ -206,12 +222,74 @@ var vstab = R([1,2])([PI/2])(MAP(s2)(domain2));
 	return STRUCT([vstab,hstabs]);
 }
 
-var w1 = T([0,1,2])([1.75,-0.6,0.4])(R([0,1])(-PI/2)(R([0,2])([-PI/2])(Wing())));
+var Propeller = function () {
+	var domain1 = INTERVALS(1)(30);
+var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
+
+var controls0 = [[0,0,-0.02],[0,1,-0.02],[0,0,0],[0,0,0]];
+var c0 = CUBIC_HERMITE(S0)(controls0);
+var curve0 = MAP(c0)(domain1);
+
+var controls1 = [[0,0,0],[0,1,0],[0.8,0,0],[-0.4,0,0]];
+var c1 = CUBIC_HERMITE(S0)(controls1);
+var curve1 = MAP(c1)(domain1);
+
+var controls2 = [[0,0,0.05],[0,1,0.05],[0.8,0,0],[-0.4,0,0]];
+var c2 = CUBIC_HERMITE(S0)(controls2);
+var curve2 = MAP(c2)(domain1);
+
+var controls3 = [[0,0,0.07],[0,1,0.07],[0,0,0],[0,0,0]];
+var c3 = CUBIC_HERMITE(S0)(controls3);
+var curve3 = MAP(c3)(domain1);
+/*
+var curves = STRUCT([curve0,curve1,curve2,curve3]);
+DRAW(curves);
+
+DRAW(POLYLINE([[0,0,0],[0,1,0],[0.1,1,0],[0.1,0,0],[0,0,0]]));
+*/
+
+var s = BEZIER(S1)([c0,c1,c2,c3]);
+var surf11 = MAP(s)(domain2);
+var surf12 = S([0])([-1])(surf11);
+var surfes1 = STRUCT([surf11,surf12,S([1])([-1]),surf11,surf12]);
+
+var controls4 = [[0,0.15,-0.04]];
+var c4 = BEZIER(S0)(controls4);
+var curve4 = MAP(c4)(domain1);
+
+var controls5 = [[0,0,0],[0,0.3,0],[0.6,0,0],[-0.6,0,0]];
+var c5 = CUBIC_HERMITE(S0)(controls5);
+var curve5 = MAP(c5)(domain1);
+
+var controls6 = [[0,0,0.05],[0,0.3,0.05],[0.6,0,0],[-0.6,0,0]];
+var c6 = CUBIC_HERMITE(S0)(controls6);
+var curve6 = MAP(c6)(domain1);
+
+var controls7 = [[0,0.15,0.09]];
+var c7 = BEZIER(S0)(controls7);
+var curve7 = MAP(c7)(domain1);
+/*
+var curves2 = STRUCT([curve4,curve5,curve6,curve7]);
+DRAW(curves2);
+
+DRAW(POLYLINE([[0,0,0],[0,0.15,0],[0.075,0.15,0],[0.075,0,0],[0,0,0]]));
+*/
+var s2 = BEZIER(S1)([c4,c5,c6,c7]);
+var surf21 = T([1])([-0.15])(MAP(s2)(domain2));
+var surf22 = S([0])([-1])(surf21);
+var surfes2 = STRUCT([surf21,surf22]);
+
+return STRUCT([surfes1,surfes2]);
+}
+
+var w1 = T([0,1,2])([1.8,-0.6,0.4])(R([0,1])(-PI/2)(R([0,2])([-PI/2])(Wing())));
 var w2 = S([2])([-1])(w1);
 
 var f = Fuselage();
 
 var s = R([1,2])(PI)(T([0])([6.2])(Stabilizers()));
 
-var aircraft = STRUCT([w1,w2,f,s]);
-DRAW(aircraft)
+var p = R([1,2])([PI/4])(T([0])([-0.2])(R([0,2])(PI/2)(Propeller())));
+
+var aircraft = STRUCT([w1,w2,f,s,p]);
+DRAW(aircraft);
