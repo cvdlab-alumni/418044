@@ -44,7 +44,7 @@ var controls10 = [[7,-0.4,0],[7,0.4,0],[0,0,1],[0,0,-1]];
 var c10 = CUBIC_HERMITE(S0)(controls10);
 var curve10 = MAP(c10)(domain1);
 
-var controls11 = [[7.5,-0.3,0],[7.5,0.3,0],[0,0,0],[0,0,0]];
+var controls11 = [[7,-0.3,0],[7,0.3,0],[0,0,0],[0,0,0]];
 var c11 = CUBIC_HERMITE(S0)(controls11);
 var curve11 = MAP(c11)(domain1);
 
