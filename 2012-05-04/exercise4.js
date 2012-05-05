@@ -55,9 +55,7 @@ var curve12 = MAP(c12)(domain1);
 
 var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 var s = BEZIER(S1)([c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12]);
-var surf = MAP(s)(domain2);
-return surf;
-
+return COLOR([252/255,212/255,19/255])(MAP(s)(domain2));
 }
 
 var Fuselage = function() {
@@ -107,7 +105,7 @@ var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 var s = BEZIER(S1)([c0,c3,c4,c5,c6,c7,c8,c9,c10,c11]);
 var surf11 = MAP(s)(domain2);
 var surf21 = S([2])([-1])(surf11);
-var surfes1 = STRUCT([surf11,surf21]);
+var surfes1 = COLOR([252/255,212/255,19/255])(STRUCT([surf11,surf21]));
 
 var controls15 = [[-0.2,-0.1,0],[-0.2,-0.1,0],[0,0,0],[0,0,0]];
 var c15 = CUBIC_HERMITE(S0)(controls15);
@@ -128,7 +126,7 @@ var curve14 = MAP(c14)(domain1);
 var s2 = BEZIER(S1)([c15,c12,c13,c14]);
 var surf21 = MAP(s2)(domain2);
 var surf22 = S([2])([-1])(surf21);
-var surfes2 = STRUCT([T([1])([0.05]),surf21,surf22]);
+var surfes2 = COLOR([1,1,1])(STRUCT([T([1])([0.05]),surf21,surf22]));
 var surfes = STRUCT([surfes1,surfes2]);
 
 	return surfes;
@@ -219,7 +217,7 @@ var curve16 = MAP(c16)(domain1);
 var s2 = BEZIER(S1)([c16,c15,c14,c6,c7,c8,c9,c10,c11,c12,c13]);
 var vstab = R([1,2])([PI/2])(MAP(s2)(domain2));
 
-	return STRUCT([vstab,hstabs]);
+	return COLOR([252/255,212/255,19/255])(STRUCT([vstab,hstabs]));
 }
 
 var Propeller = function () {
@@ -311,6 +309,68 @@ var surf3 = S([0])([-1])(surf2);
 return COLOR([0,0,1,0.7])(STRUCT([surf1,surf2,surf3]));
 }
 
+var Roll = function() {
+	var domain1 = INTERVALS(1)(30);
+var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
+
+var controls0 = [[0,0,0],[0.4,0,0],[0,0,0.2],[0,0,-0.2]];
+var c0 = CUBIC_HERMITE(S0)(controls0);
+var curve0 = MAP(c0)(domain1);
+
+var controls1 = [[0,-0.5,0],[0.2,-0.5,0],[0,0,0.2],[0,0,-0.2]];
+var c1 = CUBIC_HERMITE(S0)(controls1);
+var curve1 = MAP(c1)(domain1);
+
+var controls2 = [[-0.25,-0.6,0],[0.2,-0.6,0],[0,0,0.6],[0,0,-0.2]];
+var c2 = CUBIC_HERMITE(S0)(controls2);
+var curve2 = MAP(c2)(domain1);
+
+var controls3 = [[-0.25,-1,0],[0.75,-0.85,0],[0,0,0.6],[0,0,-0.2]];
+var c3 = CUBIC_HERMITE(S0)(controls3);
+var curve3 = MAP(c3)(domain1);
+
+var s1 = BEZIER(S1)([c0,c1,c2,c3]);
+var surf11 = MAP(s1)(domain2);
+var surf12 = S([2])([-1])(surf11);
+var surfes1 = COLOR([252/255,212/255,19/255])(STRUCT([surf11,surf12]));
+
+var controls4 = [[0,0,0.075],[0,0.5,0.075],[1,0,0],[-1,0,0]];
+var c4 = CUBIC_HERMITE(S0)(controls4);
+var curve4 = MAP(c4)(domain1);
+
+var controls5 = [[0,-0.1,0],[0,0.6,0],[1.5,0,0],[-1.5,0,0]];
+var c5 = CUBIC_HERMITE(S0)(controls5);
+var curve5 = MAP(c5)(domain1);
+
+var controls6 = [[0,0,-0.075],[0,0.5,-0.075],[1,0,0],[-1,0,0]];
+var c6 = CUBIC_HERMITE(S0)(controls6);
+var curve6 = MAP(c6)(domain1);
+
+var controls7 = [[0,0.25,-0.075]];
+var c7 = BEZIER(S0)(controls7);
+var curve7 = MAP(c7)(domain1);
+
+var controls8 = [[0,0.25,0.075]];
+var c8 = BEZIER(S0)(controls8);
+var curve8 = MAP(c8)(domain1);
+
+var s2 = BEZIER(S1)([c8,c4,c5,c6,c7]);
+var surf21 = MAP(s2)(domain2);
+var surf22 = S([0])([-1])(surf21);
+var surfes2 = T([0,1])([0.1,-1.15])(STRUCT([surf21,surf22]));
+
+/*
+var curves = STRUCT([curve0,curve1,curve2,curve3,curve4,curve5,curve6]);
+DRAW(curves);
+
+DRAW(POLYLINE([[0,0,0],[0.4,0,0],[0.4,0,0.05],[0,0,0.05],[0,0,0]]));
+DRAW(POLYLINE([[0,-0.5,0],[0.4,-0.5,0],[0.4,-0.5,0.05],[0,-0.5,0.05],[0,-0.5,0]]));
+DRAW(POLYLINE([[-0.25,-1,0],[0.75,-1,0],[0.75,-1,0.1],[-0.25,-1,0.1],[-0.25,-1,0]]));
+*/
+
+return STRUCT([surfes1,surfes2]);
+}
+
 var w1 = T([0,1,2])([1.8,-0.6,0.4])(R([0,1])(-PI/2)(R([0,2])([-PI/2])(Wing())));
 var w2 = S([2])([-1])(w1);
 
@@ -323,7 +383,8 @@ var p = R([1,2])([PI/4])(T([0])([-0.2])(R([0,2])(PI/2)(Propeller())));
 var g1 = T([0,1])([1.9,0.45])(R([0,2])([PI/2])(Glass()));
 var g2 = T([0,1])([1,0.05])(g1);
 
-var aircraft1 = COLOR([252/255,212/255,19/255])(STRUCT([w1,w2,f,s]));
-var aircraft2 = STRUCT([p,g1,g2]);
-var aircraft = STRUCT([aircraft1,aircraft2]);
+var r1 = T([0,1,2])([2.3,-0.7,1.3])(Roll());
+var r2 = S([2])([-1])(r1);
+
+var aircraft = STRUCT([w1,w2,f,s,p,g1,g2,r1,r2]);
 DRAW(aircraft);
