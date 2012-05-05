@@ -1,4 +1,5 @@
 domain1 = INTERVALS(1)(30);
+var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 
 var controls0 = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
 var c0 = CUBIC_HERMITE(S0)(controls0);
@@ -45,7 +46,6 @@ var curves = STRUCT([curve0,curve1,curve2,curve3,curve4,curve5,curve6,curve7,cur
 DRAW(curves);
 */
 
-var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 var s = BEZIER(S1)([c0,c3,c4,c5,c6,c7,c8,c9,c10,c11]);
 var surf11 = MAP(s)(domain2);
 var surf21 = S([2])([-1])(surf11);
