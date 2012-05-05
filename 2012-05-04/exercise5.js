@@ -293,5 +293,20 @@ var p = R([1,2])([PI/4])(T([0])([-0.2])(R([0,2])(PI/2)(Propeller())));
 
 var aircraft1 = COLOR([252/255,212/255,19/255])(STRUCT([w1,w2,f,s]));
 var aircraft2 = STRUCT([p]);
-var aircraft = STRUCT([aircraft1,aircraft2]);
+var aircraft = T([0,1])([10,5])(R([0,1])([-PI/12])(STRUCT([aircraft1,aircraft2])));
 DRAW(aircraft);
+
+
+
+var street = COLOR([0.2,0.2,0.2])(T([0,1,2])([-50,-2,-10])(SIMPLEX_GRID([[80],[2],[20]])));
+
+var line1 = T([0,2])([-50,9.5])(SIMPLEX_GRID([[80],[0.01],[0.5]]));
+var line2 = S([2])([-1])(line1);
+var line3 = T([0,2])([-45,-0.25])(SIMPLEX_GRID([[5,-5,5,-5,5,-5,5,-5,5,-5,5,-5,5,-5,5],[0.01],[0.5]]));
+var line4 = T([0,2])([5,-7.5])(SIMPLEX_GRID([[3,-15,3],[0.01],[1,-0.5,1,-10,1,-0.5,1]]));
+var line5 = T([0,2])([-31,-6])(SIMPLEX_GRID([[3,-15,3],[0.01],[1,-10,1]]));
+var lines = COLOR([1,1,1])(STRUCT([line1,line2,line3,line4,line5]));
+
+
+var airstrip = STRUCT([street,lines]);
+DRAW(airstrip);
