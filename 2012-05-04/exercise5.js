@@ -282,6 +282,35 @@ var surfes2 = STRUCT([surf21,surf22]);
 return STRUCT([surfes1,surfes2]);
 }
 
+var Glass = function() {
+	var domain1 = INTERVALS(1)(30);
+var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
+
+var controls0 = [[0,0,0],[0.15,0.3,0.4],[0,0,0],[0,0,0]];
+var c0 = CUBIC_HERMITE(S0)(controls0);
+var curve0 = MAP(c0)(domain1);
+
+var controls1 = [[0,0,0],[-0.15,0.3,0.4],[0,0,0],[0,0,0]];
+var c1 = CUBIC_HERMITE(S0)(controls1);
+var curve1 = MAP(c1)(domain1);
+
+var s1 = BEZIER(S1)([c0,c1]);
+var surf1 = MAP(s1)(domain2);
+
+var controls2 = [[0.35,-0.3,0.4],[0,0,0],[0,0,0],[0,0,0]];
+var c2 = CUBIC_HERMITE(S0)(controls2);
+var curve2 = MAP(c2)(domain1);
+
+var controls3 = [[0.35,-0.3,0.4],[0.15,0.3,0.4],[0,0,0],[0,0,0]];
+var c3 = CUBIC_HERMITE(S0)(controls3);
+var curve3 = MAP(c3)(domain1);
+
+var s2 = BEZIER(S1)([c2,c3]);
+var surf2 = MAP(s2)(domain2);
+var surf3 = S([0])([-1])(surf2);
+return COLOR([0,0,1,0.7])(STRUCT([surf1,surf2,surf3]));
+}
+
 var w1 = T([0,1,2])([1.8,-0.6,0.4])(R([0,1])(-PI/2)(R([0,2])([-PI/2])(Wing())));
 var w2 = S([2])([-1])(w1);
 
@@ -291,8 +320,11 @@ var s = R([1,2])(PI)(T([0])([6.2])(Stabilizers()));
 
 var p = R([1,2])([PI/4])(T([0])([-0.2])(R([0,2])(PI/2)(Propeller())));
 
+var g1 = T([0,1])([1.9,0.45])(R([0,2])([PI/2])(Glass()));
+var g2 = T([0,1])([1,0.05])(g1);
+
 var aircraft1 = COLOR([252/255,212/255,19/255])(STRUCT([w1,w2,f,s]));
-var aircraft2 = STRUCT([p]);
+var aircraft2 = STRUCT([p,g1,g2]);
 var aircraft = T([0,1])([10,5])(R([0,1])([-PI/12])(STRUCT([aircraft1,aircraft2])));
 DRAW(aircraft);
 
