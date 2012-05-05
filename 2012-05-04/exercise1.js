@@ -52,7 +52,7 @@ var controls12 = [[5,1,0.41]];
 var c12 = BEZIER(S0)(controls12);
 var curve12 = MAP(c12)(domain1);
 
-
+/*
 var curves = STRUCT([curve0,curve1,curve2,curve3,curve4,curve5,curve6,curve7,curve8,curve9,curve10,curve11,curve12]);
 DRAW(curves);
 
@@ -68,7 +68,7 @@ DRAW(POLYLINE([[3.5,0.4,0.15],[3.5,0.4,0.35],[3.5,1.85,0.35],[3.5,1.85,0.15],[3.
 DRAW(POLYLINE([[4,0.45,0.22],[4,0.45,0.37],[4,1.8,0.37],[4,1.8,0.22],[4,0.45,0.22]]));
 DRAW(POLYLINE([[4.5,0.5,0.29],[4.5,0.5,0.39],[4.5,1.7,0.39],[4.5,1.7,0.29],[4.5,0.5,0.29]]));
 DRAW(POLYLINE([[5,0.6,0.36],[5,0.6,0.46],[5,1.5,0.46],[5,1.5,0.36],[5,0.6,0.36]]));
-
+*/
 
 var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 var s = BEZIER(S1)([c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12]);

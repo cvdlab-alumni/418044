@@ -1,4 +1,3 @@
-
 var domain1 = INTERVALS(1)(30);
 var domain2 = DOMAIN([[0,1],[0,1]])([10,20]);
 
@@ -30,12 +29,12 @@ var controls5 = [[0.55,0.05,1.3]];
 var c5 = BEZIER(S0)(controls5);
 var curve5 = MAP(c5)(domain1);
 
-
+/*
 var curves = STRUCT([curve0,curve1,curve2,curve3,curve4,curve5,curve6]);
 DRAW(curves);
 
 DRAW(POLYLINE([[0,0],[0,0.1],[1.1,0.1],[1.1,0],[0,0]]));
-
+*/
 
 var s = BEZIER(S1)([c0,c1,c2,c3,c4,c5]);
 var hstab1 = T([0,1])([0.3,-0.3])(MAP(s)(domain2));
