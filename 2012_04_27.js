@@ -144,3 +144,11 @@ var splineCubic = SPLINE(CUBIC_UBSPLINE(domain))(controlpoints);
 DRAW(splineCubic);
 var splineCubic2 = COLOR([0,1,0])(SPLINE(CUBIC_CARDINAL(domain))(controlpoints));
 DRAW(splineCubic2);
+
+//k=c+n+1
+/*
+var controls = [[0,0],[0,1],[1,1],[1,0],[0,0]];
+var knots = [0,0,1,2,3,4,4];
+var nubspline = NUBSPLINE(1)(knots)(controls);
+DRAW(nubspline);
+*/
