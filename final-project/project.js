@@ -1,4 +1,10 @@
 /*
+#######################
+https://github.com/MangakaFan/final-project/tree/gh-pages
+#######################
+*/
+
+/*
 Funzione utilizzata in fase di progettazione per avere una "griglia 3D" di riferimento.
 */
 var disegnaCoordinate = function () {
